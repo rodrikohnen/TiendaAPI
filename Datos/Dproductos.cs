@@ -23,7 +23,8 @@ namespace TiendaAPI.Datos
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     using (var item = await cmd.ExecuteReaderAsync())
-                    {
+
+                    { 
                         while (await item.ReadAsync())
                         {
                             var mproductos = new Mproductos();
