@@ -15,7 +15,7 @@
         public string CadenaSQL()
         {
             
-            return connectionstring;    
+            return connectionstring;   
 
         }
 
