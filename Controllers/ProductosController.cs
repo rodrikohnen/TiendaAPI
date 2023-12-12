@@ -7,7 +7,7 @@ namespace TiendaAPI.Controllers
 
     [ApiController]
     [Route("api/productos")]
-    public class ProductosController
+    public class ProductosController : ControllerBase
     {
         [HttpGet]
 
@@ -20,6 +20,48 @@ namespace TiendaAPI.Controllers
             return lista;
 
         }
-    
+
+        [HttpPost]
+
+        public async Task<ActionResult> Post([FromBody] Mproductos parametros)
+        {
+            var function = new Dproductos();
+
+            await function.IntroducirProductos(parametros);
+
+            return NoContent();
+
+
+        }
+
+        [HttpPut("{id}")]
+
+        public async Task<ActionResult> Put(int id, [FromBody] Mproductos parametros)
+        {
+            var function = new Dproductos();
+
+            parametros.id = id;
+
+            await function.ModificarProductos(parametros);
+
+            return NoContent();
+
+        }
+
+        [HttpDelete("{id}")]
+
+        public async Task<ActionResult> Delete(int id)
+        {
+            var function = new Dproductos();
+            var parametros = new Mproductos();
+
+            parametros.id = id;
+
+            await function.EliminarProductos(parametros);
+
+            return NoContent();
+
+        }
+
     }
 }
