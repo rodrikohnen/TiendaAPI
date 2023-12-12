@@ -20,6 +20,18 @@ namespace TiendaAPI.Controllers
             return lista;
 
         }
+
+        [HttpPost]
+
+        public async Task/*<ActionResult>*/ Post([FromBody] Mproductos parametros)
+        {
+            var function = new Dproductos();
+
+            await function.IntroducirProductos(parametros);
+            
+
+
+        }
     
     }
 }

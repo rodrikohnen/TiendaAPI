@@ -44,5 +44,35 @@ namespace TiendaAPI.Datos
             return lista;
         }
 
+
+        public async Task IntroducirProductos(Mproductos parametros )
+        {
+
+            using (var sql = new SqlConnection(cn.CadenaSQL()))
+            {
+
+                using (var cmd = new SqlCommand("insertarProductos", sql))
+                {
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@descripcion", parametros.descripcion);
+                    cmd.Parameters.AddWithValue("@precio", parametros.precio);
+                    await sql.OpenAsync();
+                    await cmd.ExecuteNonQueryAsync();  
+
+
+                    
+
+
+                }
+
+
+            }
+
+
+        }
+
+
+
     }
 }
